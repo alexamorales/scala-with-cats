@@ -5,28 +5,32 @@ import org.scalatest.{Matchers, WordSpec}
 class JsonWriterSpec extends WordSpec with Matchers {
   "JsonWriter should" should {
 
-    import Json.Instances._
-    import Json.Syntax._
+      import Json.Instances._
+      import Json.Syntax._
 
-    "transform person to json" in {
+      "transform person to json" in {
 
-      val expected = JsonObject(
-        Map(
-        "name" -> JsonString("Person"),
-        "email" -> JsonString("person@gmail.com"))
-      )
+        val expected = JsonObject(
+          Map(
+            "name" -> JsonString("Person"),
+            "email" -> JsonString("person@gmail.com")
+          )
+        )
 
-      Person("Person", "person@gmail.com").toJson should be(expected)
+        Person("Person", "person@gmail.com").toJson should be(expected)
+      }
+
+      "transform int to json" in {
+        val expected = JsonNumber(2)
+
+        2.toJson should be(expected)
+      }
+
+    "transfrom String to json" in {
+      val expected = JsonString("expected String")
+
+      "expected String".toJson should be(expected)
     }
 
-    "transform int to json" in {
-      val expected = JsonNumber(2)
-
-      2.toJson should be(expected)
     }
-
   }
-
-
-
-}
