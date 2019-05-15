@@ -1,8 +1,11 @@
 package com.github.alexamorales.monoid
 
-trait Monoid[A] {
-  def combine(a: A, b: A): A
+trait Monoid[A] extends Semigroup[A] {
   def empty: A
+}
+
+trait Semigroup[A] {
+  def combine(a: A, b: A): A
 }
 
 object Monoid {
@@ -18,8 +21,6 @@ object Monoid {
 
   def apply[A](implicit monoid: Monoid[A]): Monoid[A] =
     monoid
-
-
 
 }
 

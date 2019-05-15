@@ -1,5 +1,4 @@
 package com.github.alexamorales.monoid
-import com.github.alexamorales.semigroup.Semigroup
 
 object SetSemigroupsAndMonoid {
 
